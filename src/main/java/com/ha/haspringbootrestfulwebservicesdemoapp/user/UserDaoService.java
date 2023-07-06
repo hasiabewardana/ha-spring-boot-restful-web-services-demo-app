@@ -28,8 +28,10 @@ public class UserDaoService {
         return users.stream().filter(predicate).findFirst().get();
     }
 
-    public void saveUser(User user) {
+    public User saveUser(User user) {
         user.setId(++count);
         users.add(user);
+
+        return user;
     }
 }
