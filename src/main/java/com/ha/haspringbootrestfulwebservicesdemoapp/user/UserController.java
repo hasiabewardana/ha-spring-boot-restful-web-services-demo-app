@@ -32,6 +32,12 @@ public class UserController {
 
     @RequestMapping("/users/{id}")
     public User retrieveOneUser(@PathVariable int id) {
-        return userDaoService.findOne(id);
+        User user = userDaoService.findOne(id);
+
+        if(user == null){
+            throw new UserNotFoundException("id: " + id);
+        }
+
+        return user;
     }
 }
