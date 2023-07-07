@@ -40,4 +40,9 @@ public class UserController {
 
         return user;
     }
+
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable int id) {
+        userDaoService.deleteUser(id);
+    }
 }
