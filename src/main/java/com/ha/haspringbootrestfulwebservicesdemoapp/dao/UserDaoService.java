@@ -1,5 +1,6 @@
-package com.ha.haspringbootrestfulwebservicesdemoapp.user;
+package com.ha.haspringbootrestfulwebservicesdemoapp.dao;
 
+import com.ha.haspringbootrestfulwebservicesdemoapp.domain.User;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -10,7 +11,7 @@ import java.util.function.Predicate;
 @Component
 public class UserDaoService {
 
-    private static List<User> users = new ArrayList<>();
+    private static final List<User> users = new ArrayList<>();
     private static int count = 0;
 
     static {

@@ -1,6 +1,9 @@
-package com.ha.haspringbootrestfulwebservicesdemoapp.user;
+package com.ha.haspringbootrestfulwebservicesdemoapp.controller;
 
 import com.ha.haspringbootrestfulwebservicesdemoapp.exception.UserNotFoundException;
+import com.ha.haspringbootrestfulwebservicesdemoapp.domain.User;
+import com.ha.haspringbootrestfulwebservicesdemoapp.dao.UserDaoService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -23,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> saveUser(@RequestBody User user) {
+    public ResponseEntity<User> saveUser(@Valid @RequestBody User user) {
         User saveUser = userDaoService.saveUser(user);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(saveUser.getId()).toUri();
 
@@ -34,7 +37,7 @@ public class UserController {
     public User retrieveOneUser(@PathVariable int id) {
         User user = userDaoService.findOne(id);
 
-        if(user == null){
+        if (user == null) {
             throw new UserNotFoundException("id: " + id);
         }
 
