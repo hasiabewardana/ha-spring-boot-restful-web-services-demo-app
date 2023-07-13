@@ -10,7 +10,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 public class UserController {
@@ -22,17 +21,37 @@ public class UserController {
     }
 
     // Get all users
-    // URI versioning
-    @GetMapping("/v1/users")
+    @GetMapping("/users")
     public List<User> retrieveAllUsers() {
         return userDaoService.findAll();
     }
 
-    // Get all users names only
+    // Get all users
+    // URI versioning
+    @GetMapping("/v1/users")
+    public List<User> retrieveAllUsersUriVersion1() {
+        return userDaoService.findAll();
+    }
+
+    // Get all users
     // URI versioning
     @GetMapping("/v2/users")
-    public List<String> retrieveAllUsersNames() {
-        return userDaoService.findAll().stream().map(User::getName).toList();
+    public List<User> retrieveAllUsersUriVersion2() {
+        return userDaoService.findAll();
+    }
+
+    // Get all users names only
+    // Request param versioning
+    @GetMapping(value = "/users", params = "version=1")
+    public List<User> retrieveAllUsersRequestParamVersion1() {
+        return userDaoService.findAll();
+    }
+
+    // Get all users names only
+    // Request param versioning
+    @GetMapping(value = "/users", params = "version=2")
+    public List<User> retrieveAllUsersRequestParamVersion2() {
+        return userDaoService.findAll();
     }
 
     // Create a user
