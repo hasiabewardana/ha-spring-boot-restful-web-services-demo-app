@@ -1,4 +1,4 @@
-package com.ha.haspringbootrestfulwebservicesdemoapp.helloworld;
+package com.ha.haspringbootrestfulwebservicesdemoapp.domain;
 
 public class HelloWorldBean {
 

@@ -1,5 +1,6 @@
-package com.ha.haspringbootrestfulwebservicesdemoapp.helloworld;
+package com.ha.haspringbootrestfulwebservicesdemoapp.controller;
 
+import com.ha.haspringbootrestfulwebservicesdemoapp.domain.HelloWorldBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
