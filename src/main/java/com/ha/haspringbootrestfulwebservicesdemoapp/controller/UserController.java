@@ -40,17 +40,45 @@ public class UserController {
         return userDaoService.findAll();
     }
 
-    // Get all users names only
+    // Get all users
     // Request param versioning
     @GetMapping(value = "/users", params = "version=1")
     public List<User> retrieveAllUsersRequestParamVersion1() {
         return userDaoService.findAll();
     }
 
-    // Get all users names only
+    // Get all users
     // Request param versioning
     @GetMapping(value = "/users", params = "version=2")
     public List<User> retrieveAllUsersRequestParamVersion2() {
+        return userDaoService.findAll();
+    }
+
+    // Get all users
+    // Request header versioning
+    @GetMapping(value = "/users/header", headers = "X-API-VERSION=1")
+    public List<User> retrieveAllUsersRequestHeaderVersion1() {
+        return userDaoService.findAll();
+    }
+
+    // Get all users
+    // Request header versioning
+    @GetMapping(value = "/users/header", headers = "X-API-VERSION=2")
+    public List<User> retrieveAllUsersRequestHeaderVersion2() {
+        return userDaoService.findAll();
+    }
+
+    // Get all users
+    // Accept header versioning
+    @GetMapping(value = "/users/accept1", produces = "application/vnd.company.app-v1+json")
+    public List<User> retrieveAllUsersAcceptHeaderVersion1() {
+        return userDaoService.findAll();
+    }
+
+    // Get all users
+    // Accept header versioning
+    @GetMapping(value = "/users/accept2", produces = "application/vnd.company.app-v2+json")
+    public List<User> retrieveAllUsersAcceptHeaderVersion2() {
         return userDaoService.findAll();
     }
 
