@@ -107,7 +107,7 @@ public class UserController {
         }
 
         // Entity model
-        EntityModel entityModel = EntityModel.of(user);
+        EntityModel<User> entityModel = EntityModel.of(user);
 
         // WebMvcLinkBuilder
         WebMvcLinkBuilder webMvcLinkBuilder = linkTo(methodOn(this.getClass()).retrieveAllUsers());
