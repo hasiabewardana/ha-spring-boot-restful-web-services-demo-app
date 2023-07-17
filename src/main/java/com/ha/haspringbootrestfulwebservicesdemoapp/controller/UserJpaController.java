@@ -1,5 +1,6 @@
 package com.ha.haspringbootrestfulwebservicesdemoapp.controller;
 
+import com.ha.haspringbootrestfulwebservicesdemoapp.domain.Post;
 import com.ha.haspringbootrestfulwebservicesdemoapp.domain.User;
 import com.ha.haspringbootrestfulwebservicesdemoapp.exception.UserNotFoundException;
 import com.ha.haspringbootrestfulwebservicesdemoapp.repository.UserRepository;
@@ -66,5 +67,17 @@ public class UserJpaController {
     @DeleteMapping("/jpa/users/{id}")
     public void deleteUser(@PathVariable int id) {
         userRepository.deleteById(id);
+    }
+
+    // Get all posts of a specific user
+    @GetMapping("/jpa/users/{id}/posts")
+    public List<Post> retrievePostForUser(@PathVariable int id) {
+        Optional<User> user = userRepository.findById(id);
+
+        if (user.isEmpty()) {
+            throw new UserNotFoundException("id: " + id);
+        }
+
+        return user.get().getPosts();
     }
 }
